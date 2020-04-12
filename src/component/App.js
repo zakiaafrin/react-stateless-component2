@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';   // style
-import Example from './Example';
+import First from './First';
 
 class App extends Component {
+  state = {
+    persons: [
+      { name: 'Zakia', email: 'abc@xyz.com', address: 'ABC' },
+      { name: 'Afrin', email: 'def@xyz.com', address: 'DEF' },
+      { name: 'Jeme', email: 'ghi@xyz.com', address: 'GHI' }
+    ]
+  }
+
   render() {
     return (
       <div className='App'>
-        <Example name='Stateless Component' />
+        {this.state.persons.map((people, index) => {
+          return <First
+            key={index}
+            name={people.name}
+            email={people.email}
+            address={people.address} />
+        })}
       </div>
     );
   }
